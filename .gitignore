@@ -1,0 +1,15 @@
+node_modules/
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+build.log
+qa.log
+scripts/_logo_scratch/
+assets/telegram/sheets/
+assets/telegram/*.log
+assets/telegram/*.err
+build.log
+qa.log
+scripts/_logo/
+npm-install.log

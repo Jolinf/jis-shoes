@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+/* TELDEV Storefront design system tokens, JIS SHOES NG values from clients/jis-shoes-ng/brand-spec.md.
+   Fixed layer (spacing, type sizes, tap size, widths, breakpoints) matches the design system defaults. */
+@theme {
+  --color-surface: #ffffff;
+  --color-surface-raised: #f4f4f2;
+  --color-surface-sunken: #f1f1f1;
+  --color-ink: #111111;
+  --color-ink-muted: #5e5e5e;
+  --color-line: #cacaca;
+  --color-line-strong: #767676;
+  --color-brand: #111111;
+  --color-on-brand: #f8b20f;
+  --color-brand-tint: #f8b20f;
+  --color-danger: #b42318;
+
+  --font-display: "Montserrat", "Arial Black", system-ui, sans-serif;
+  --font-body: "Archivo", system-ui, sans-serif;
+
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-button: 999px;
+
+  --breakpoint-tablet: 40rem;   /* bp-tablet 640px */
+  --breakpoint-desktop: 64rem;  /* bp-desktop 1024px */
+
+  --spacing-tap: 48px;          /* tap-min */
+  --container-content: 640px;   /* content-max */
+  --container-layout: 1120px;   /* layout-max */
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    background: var(--color-surface);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 24px;
+    -webkit-font-smoothing: antialiased;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 2px;
+  }
+  [id] {
+    scroll-margin-top: 16px;
+  }
+}
+
+@utility display {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+@utility label {
+  font-size: 12px;
+  line-height: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
