@@ -1,14 +1,14 @@
 # JIS SHOES NG storefront
 
-Single-page, mobile-first storefront for JIS SHOES NG (footwear, Nigeria), built by TELDEV Technologies on the TELDEV Storefront design system. Customers browse 50 pairs and start a WhatsApp or Instagram conversation; there is no cart or checkout. The full catalogue stays on Telegram (t.me/jissneakers).
+Single-page, mobile-first storefront for JIS SHOES NG (footwear, Nigeria), built by TELDEV Technologies on the TELDEV Storefront design system. Customers browse 10 pairs at a time, rotating from a pool of 82, and start a WhatsApp or Instagram conversation; there is no cart or checkout. The full catalogue stays on Telegram (t.me/jissneakers).
 
 ## Where things are
 
 - `clients/jis-shoes-ng/`: brief, brand analysis, Refero reference, brand spec, layout manifest, QA report.
 - `lib/storefront.ts`: page content (name, lines, contact details). Only add facts that are in `brief.md`. No brand names or prices (client decisions).
-- `lib/gallery.json`: the 50 gallery photos (generated); `scripts/picks.json` chooses them.
+- `lib/gallery.json`: gallery and page photos (generated); `scripts/picks.json` chooses them.
 - `lib/messaging.ts`: shared messaging contract. Gallery taps send a WhatsApp message with a link to that photo.
-- `components/`: sections, filterable gallery, CTA button. `app/globals.css`: design tokens.
+- `components/`: sections, gallery, CTA button, platform icons. `app/globals.css`: design tokens.
 - `public/brand/`: redrawn logo (`logo.svg`, `mark.svg`) and icons, built by `scripts/build_logo.py` from `assets/brand/instagram-avatar-1080.jpg`.
 - `assets/telegram/`: crawled posts (`posts.json`) and original photos (untouched).
 

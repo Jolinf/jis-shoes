@@ -18,11 +18,12 @@ OUT.mkdir(parents=True, exist_ok=True)
 picks = json.loads((ROOT / "scripts" / "picks.json").read_text(encoding="utf-8"))
 posts = {p["id"]: p for p in json.loads((ROOT / "assets" / "telegram" / "posts.json").read_text(encoding="utf-8"))}
 
+for old in OUT.glob("*.webp"):  # drop photos no longer picked
+    old.unlink()
+
 items = []
-for style, ids in picks.items():
-    if style.startswith("_"):
-        continue
-    for pid in ids:
+for use in ("gallery", "pool", "page"):
+    for pid, style, desc in picks[use]:
         im = Image.open(SRC / f"{pid}.jpg").convert("RGB")
         for name in (480, 800):
             w = min(name, im.width)  # never upscale; small originals still get both file names
@@ -32,6 +33,8 @@ for style, ids in picks.items():
         items.append({
             "id": pid,
             "style": style,
+            "use": use,
+            "alt": desc,
             "width": 800,
             "height": round(im.height * 800 / im.width),
             "post": f"https://t.me/jissneakers/{post_id}",
@@ -42,7 +45,7 @@ for style, ids in picks.items():
 (ROOT / "lib" / "gallery.json").write_text(json.dumps(items, indent=1), encoding="utf-8")
 
 # Share preview: four picks across a 1200x630 canvas
-og_ids = ["4705_1", "4578_1", "4624_2", "4600_1"]
+og_ids = ["4715_1", "4578_1", "4624_2", "4600_1"]
 canvas = Image.new("RGB", (1200, 630), (17, 17, 17))
 for k, pid in enumerate(og_ids):
     im = Image.open(SRC / f"{pid}.jpg").convert("RGB")

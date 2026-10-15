@@ -61,36 +61,29 @@ export interface Photo {
   shareUrl: string | null;
 }
 
-const counters: Partial<Record<Style, number>> = {};
-const photos: Photo[] = (galleryData as { id: string; style: Style; width: number; height: number }[]).map((g) => {
-  counters[g.style] = (counters[g.style] ?? 0) + 1;
-  return {
-    id: g.id,
-    style: g.style,
-    src: `${base}/images/g/${g.id}-800.webp`,
-    srcSet: `${base}/images/g/${g.id}-480.webp 480w, ${base}/images/g/${g.id}-800.webp 800w`,
-    width: g.width,
-    height: g.height,
-    alt: `${styles[g.style]}, photo ${counters[g.style]} from the JIS SHOES NG catalogue`,
-    shareUrl: siteUrl ? `${siteUrl}/images/g/${g.id}-800.webp` : null,
-  };
-});
+/* Photo descriptions (colour and type only, never a brand: client decision 15 Oct 2026) live in scripts/picks.json. */
+type Raw = { id: string; style: Style; use: "gallery" | "pool" | "page"; alt: string; width: number; height: number };
+const photos: (Photo & { use: Raw["use"] })[] = (galleryData as Raw[]).map((g) => ({
+  id: g.id,
+  style: g.style,
+  use: g.use,
+  src: `${base}/images/g/${g.id}-800.webp`,
+  srcSet: `${base}/images/g/${g.id}-480.webp 480w, ${base}/images/g/${g.id}-800.webp 800w`,
+  width: g.width,
+  height: g.height,
+  alt: g.alt,
+  shareUrl: siteUrl ? `${siteUrl}/images/g/${g.id}-800.webp` : null,
+}));
 
-/** "All" order: one of each style in turn, so the first rows show the range rather than 30 sneakers. */
-function interleave(list: Photo[]): Photo[] {
-  const queues = (Object.keys(styles) as Style[]).map((s) => list.filter((p) => p.style === s));
-  const out: Photo[] = [];
-  while (queues.some((q) => q.length)) {
-    for (const q of queues) {
-      const p = q.shift();
-      if (p) out.push(p);
-    }
-  }
-  return out;
-}
-export const gallery: Photo[] = interleave(photos);
+/** The ten slots as first shown (server-rendered), in the order set in scripts/picks.json. */
+export const gallery: Photo[] = photos.filter((p) => p.use === "gallery");
 
-const byId = (id: string) => gallery.find((g) => g.id === id)!;
+/** Every photo that may rotate into a slot (the first ten included), grouped by style: a slot only takes its own style. */
+export const galleryPool: Record<string, Photo[]> = photos
+  .filter((p) => p.use === "gallery" || p.use === "pool")
+  .reduce<Record<string, Photo[]>>((acc, p) => ({ ...acc, [p.style]: [...(acc[p.style] ?? []), p] }), {});
+
+const byId = (id: string) => photos.find((g) => g.id === id)!;
 
 /** The four lines named in the Telegram and Instagram bios. */
 export const offerings = [
@@ -100,4 +93,7 @@ export const offerings = [
   { id: "loafers", name: "Loafers", description: "Platform and penny loafers, including women's styles.", photo: byId("4600_1"), style: "loafers" as Style },
 ];
 
-export const heroPhotos = ["4705_1", "4578_1", "4624_2"].map(byId);
+export const heroPhotos = ["4715_1", "4683_2"].map(byId);
+
+/** Every style in the catalogue, for the strip under the hero. */
+export const styleList = Object.values(styles);

@@ -1,25 +1,34 @@
 @import "tailwindcss";
 
-/* TELDEV Storefront design system tokens, JIS SHOES NG values from clients/jis-shoes-ng/brand-spec.md.
-   Fixed layer (spacing, type sizes, tap size, widths, breakpoints) matches the design system defaults. */
+/* TELDEV Storefront design system tokens, JIS SHOES NG values from clients/jis-shoes-ng/brand-spec.md
+   (design logic: clients/jis-shoes-ng/design-logic.md). Fixed layer matches the design system defaults. */
 @theme {
-  --color-surface: #ffffff;
-  --color-surface-raised: #f4f4f2;
-  --color-surface-sunken: #f1f1f1;
-  --color-ink: #111111;
-  --color-ink-muted: #5e5e5e;
-  --color-line: #cacaca;
-  --color-line-strong: #767676;
-  --color-brand: #111111;
+  /* Light bands: warm bone, not plain white */
+  --color-surface: #f3f1ec;
+  --color-surface-raised: #ffffff;
+  --color-surface-sunken: #e8e5de;
+  --color-ink: #121212;
+  --color-ink-muted: #57534c;
+  --color-line: #d9d5cc;
+  --color-line-strong: #7a756c;
+  /* Buttons on light bands: ink pill, gold label */
+  --color-brand: #121212;
   --color-on-brand: #f8b20f;
+  /* Gold: CTA fill on dark bands, the style strip, the send-a-picture band */
   --color-brand-tint: #f8b20f;
   --color-danger: #b42318;
+  /* Inverse (dark) bands: header, hero, gallery, contact, footer */
+  --color-surface-inverse: #0d0d0d;
+  --color-surface-inverse-raised: #1a1a1a;
+  --color-ink-inverse: #f3f1ec;
+  --color-ink-inverse-muted: #a8a49b;
+  --color-line-inverse: #2e2e2e;
 
-  --font-display: "Montserrat", "Arial Black", system-ui, sans-serif;
+  --font-display: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
   --font-body: "Archivo", system-ui, sans-serif;
 
-  --radius-sm: 0px;
-  --radius-md: 0px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
   --radius-button: 999px;
 
   --breakpoint-tablet: 40rem;   /* bp-tablet 640px */
@@ -40,34 +49,51 @@
     }
   }
   body {
-    background: var(--color-surface);
+    background: var(--color-surface-inverse);
     color: var(--color-ink);
     font-family: var(--font-body);
     font-size: 16px;
     line-height: 24px;
     -webkit-font-smoothing: antialiased;
+    --ring: var(--color-ink);
   }
+  /* Focus ring: ink on light bands, gold on dark bands (set --ring on the band) */
   :focus-visible {
-    outline: 2px solid var(--color-ink);
-    outline-offset: 2px;
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
   }
   [id] {
     scroll-margin-top: 16px;
   }
 }
 
+/* A dark band: sets text colour and the focus ring for everything inside */
+@utility band-dark {
+  background: var(--color-surface-inverse);
+  color: var(--color-ink-inverse);
+  --ring: var(--color-brand-tint);
+}
+@utility band-light {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  --ring: var(--color-ink);
+}
+
+/* Barlow Condensed 800 italic, uppercase, tight: the energy of the logo's slanted lettering */
 @utility display {
   font-family: var(--font-display);
   font-style: italic;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.01em;
+  letter-spacing: -0.005em;
 }
 
+/* Barlow Condensed 600 caps: eyebrows, labels, buttons */
 @utility label {
-  font-size: 12px;
-  line-height: 16px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  line-height: 18px;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   font-weight: 600;
 }

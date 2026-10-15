@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 // Fonts ship with the site (no build-time download from Google).
-import "@fontsource/montserrat/latin-700-italic.css";
+import "@fontsource/barlow-condensed/latin-600.css";
+import "@fontsource/barlow-condensed/latin-800-italic.css";
 import "@fontsource/archivo/latin-400.css";
 import "@fontsource/archivo/latin-600.css";
 import "./globals.css";
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
   },
 };
 
-export const viewport: Viewport = { themeColor: "#111111", width: "device-width", initialScale: 1 };
+export const viewport: Viewport = { themeColor: "#0d0d0d", width: "device-width", initialScale: 1 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

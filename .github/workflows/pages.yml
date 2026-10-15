@@ -1,10 +1,10 @@
-# Builds the storefront and publishes out/ to GitHub Pages on every push to master.
+# Builds the storefront and publishes out/ to GitHub Pages on every push to main.
 # One-time setup: repo Settings > Pages > Build and deployment > Source: "GitHub Actions".
 name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   workflow_dispatch:
 
 permissions:

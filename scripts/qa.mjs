@@ -42,6 +42,15 @@ const tileOk = tiles.filter((i) => {
   return id && text.includes(`/images/g/${id}-`) && /^https:\/\//.test(text.split(": ")[1] || "");
 });
 if (tiles.length) check("critical", "Every gallery tile's message links to its own photo", tileOk.length === tiles.length, `${tileOk.length}/${tiles.length}`);
+// Design system: gallery max 10, no photo repeated elsewhere on the page; design-logic file present
+check("high", "Gallery has at most 10 items", tiles.length <= 10, `${tiles.length} tiles`);
+const tileIds = tiles.map((i) => (i.match(/images\/g\/([\d_]+)-/) || [])[1]);
+// Rendered markup only: drop the gallery section and Next's inline payload scripts (they repeat every URL)
+const outside = html.replace(/<script\b[\s\S]*?<\/script>/g, "").replace(/<section id="gallery"[\s\S]*?<\/section>/, "");
+check("medium", "Gallery photos are not repeated in hero or offerings", tileIds.every((id) => !outside.includes(`/images/g/${id}-`)));
+const clientsDir = join(process.cwd(), "clients");
+const logicFiles = existsSync(clientsDir) ? readdirSync(clientsDir).filter((c) => existsSync(join(clientsDir, c, "design-logic.md"))) : [];
+check("high", "clients/<client>/design-logic.md exists", logicFiles.length > 0, logicFiles.join(", "));
 
 // Anchors point to sections that exist
 for (const h of hrefs.filter((h) => h.startsWith("#"))) {

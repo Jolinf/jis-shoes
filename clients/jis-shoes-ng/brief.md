@@ -36,7 +36,7 @@ Sources: Telegram channel t.me/jissneakers (157 posts, 25 Apr to 9 Oct 2026, cra
 - Logo: redraw the Instagram logo cleanly (done: `public/brand/logo.svg`), for client confirmation.
 - Prices: not shown ("DM for price"), though posts list ₦22,000 to ₦80,000.
 - Brands: not named anywhere on the site; shoes grouped by style.
-- Gender: no labels; the 50 gallery picks include both men's and women's styles.
+- Gender: no labels; the 10 gallery picks include both men's and women's styles.
 - Second contact button: Instagram DM.
 - Trust info: show "Nationwide delivery"; do not show the B/N 3611571 number.
 
@@ -48,6 +48,6 @@ Sources: Telegram channel t.me/jissneakers (157 posts, 25 Apr to 9 Oct 2026, cra
 ## Missing information
 
 1. Confirmation of the redrawn logo, and the original file if one exists.
-2. Original font for "SHOES.NG" (Montserrat Bold Italic used as the closest match).
+2. Original font for "SHOES.NG" (Montserrat Bold Italic used to redraw the logo; the site uses Barlow Condensed).
 3. Whether pictured designs are still in stock (posts say unavailable ones are removed; picks are from posts live on 15 Oct 2026).
 4. Delivery times or fees (not stated anywhere).

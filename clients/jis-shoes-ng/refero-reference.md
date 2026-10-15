@@ -1,43 +1,48 @@
 # Refero reference: JIS SHOES NG
 
-Checker: https://styles.refero.design/?ref=ProductDisrupt (homepage, design-md-examples index), reviewed 15 Oct 2026.
+Checker: https://styles.refero.design/?ref=ProductDisrupt (homepage and the design-md-examples index), reviewed 15 Oct 2026. UX reference: Apple HIG (`system/ux-standards.md`).
 
-## Research brief
+## Research brief (round 2, after "looks like a wireframe")
 
-- Category RETAIL (footwear), large varied catalogue, phone photos with mixed backgrounds, gold logo.
+- Category RETAIL (footwear). Phone photos with mixed backgrounds. Gold-on-black logo, tagline "energized in style".
 - Questions:
-  1. How should 50 mixed photos sit together without looking messy?
-  2. How can one accent colour (gold) carry the brand without fighting the products?
-  3. How do primary and secondary actions look in a product-first UI?
+  1. How can mixed phone photos look deliberate rather than messy?
+  2. How can gold carry energy without failing contrast?
+  3. How does a long phone scroll stay structured without boxes and borders?
 
 ## Shortlist
 
-Nike.com, Freitag, Zara, Adam Lippes (from the design-md-examples index, searched for retail and fashion); teenage engineering and AI for Business (homepage). Zara and Adam Lippes are editorial fashion on white with large model imagery (rejected: JIS has no model photography). teenage engineering is a catalogue but weight-100 type and blue links feel cold and technical. AI for Business: oversized condensed caps fit the energy but its 3D-render imagery and large card radii don't.
+Peak Design, Perk, Raycast, ORYZO AI (examples index); Freitag and Nike.com (round 1). Raycast: right darkness and one warm accent, but no photography and a technical voice. ORYZO: dark and warm, but one 100vh section per idea is too slow for a shop on mobile data.
 
-### Reference 1: Freitag (primary)
+### Reference 1: Peak Design (primary)
 
-- **URL:** https://styles.refero.design/style/d75a643b-a518-4550-b430-679cd989a447
-- **Research question:** 1 and 2.
-- **Observed patterns:** white canvas; products in a continuous grid ruled by 1px #cacaca lines with no gutters; uppercase labels with tracking; pill buttons, black on white; achromatic UI where colour comes from the products; one yellow accent (#ffdd00) used only for a small "NEW" dot; centred black logo plate in the header.
-- **Useful principle:** a ruled lattice makes unrelated photos read as one catalogue; a single warm accent in a black-and-white UI.
-- **Client adaptation:** ruled gallery grid; black logo plate with the gold logo; gold only for the logo, button labels and the active filter.
-- **What not to copy:** Akkurat font, product codes, 6-column density (too small on phones), Freitag marks.
+- **URL:** https://styles.refero.design/style/6f3fb64d-d4c9-4ec1-86a1-7983e5180985
+- **Research question:** 1 and 3.
+- **Observed patterns:** full-bleed bands alternating white and near-black; split hero (dark text panel, full-bleed photo); condensed bold uppercase for nav, buttons and eyebrows; 8px radius on cards and product photos; borderless, shadowless cards; one accent colour (#cc2e39) on one element per view.
+- **Useful principle:** tonal bands, not borders, group the page; condensed caps give one confident voice.
+- **Client adaptation:** dark bands for hero, gallery and contact; Barlow Condensed for display and labels; 12px photo radius; gold as the single accent.
+- **What not to copy:** the serif display face (wrong energy for sneakers), studio-white product photos (JIS does not have them), red accent, 4-column carousels.
 - **Mobile assessment:** not verified (style page only).
 - **Decision:** Adapt.
 
-### Reference 2: Nike.com (secondary)
+### Reference 2: Perk (secondary)
 
-- **URL:** https://styles.refero.design/style/d7ace114-0548-41f5-a2ff-2afbf32be94d
-- **Research question:** 3.
-- **Observed patterns:** monochrome UI (#111111, #707072, #e5e5e5, #f5f5f5); edge-to-edge product photos with 0 radius; pill buttons (30px radius), primary dark fill, inverse white; one CTA treatment per page; no shadows.
-- **Useful principle:** photography carries colour; buttons are simple pills; photos are square-cornered.
-- **Client adaptation:** ink #111111 pills; photos with no radius or border; no shadows.
-- **What not to copy:** Nike Futura, Helvetica Now, swoosh, product names.
+- **URL:** https://styles.refero.design/style/75c06591-34d2-493a-bd49-70551b5e4a53
+- **Research question:** 2 and 3.
+- **Observed patterns:** warm parchment (#f5f5eb) instead of white; a full-bleed electric lime band carrying giant display type; the accent is the only filled button; no shadows; 28px radii.
+- **Useful principle:** one loud accent band as a pause in the scroll; warm off-white instead of white.
+- **Client adaptation:** gold full-bleed "Don't see what you want?" band and the gold style strip; bone (#F3F1EC) light bands.
+- **What not to copy:** OTSono, 28px radii (too soft for this brand), lime.
+- **Mobile assessment:** not verified.
 - **Decision:** Adapt.
+
+### Round 1 references (superseded)
+
+Freitag (https://styles.refero.design/style/d75a643b-a518-4550-b430-679cd989a447) and Nike.com (https://styles.refero.design/style/d7ace114-0548-41f5-a2ff-2afbf32be94d). Rejected in round 2: white canvas and ruled grids read as a wireframe with JIS's photos (Joshua, 15 Oct 2026).
 
 ## Conflicts resolved
 
-Freitag says no separate action colour; Nike reserves one treatment for CTAs. Chosen: one CTA treatment, ink pill with gold label, so WhatsApp actions stay obvious (project scope wins over aesthetics).
+Peak Design allows the accent on one element per view and never on buttons; the project needs an obvious messaging action. Chosen: gold is the CTA on dark bands (scope wins over aesthetics), and other gold uses are kept to separate bands so no view is flooded.
 
 ## Unresolved
 
