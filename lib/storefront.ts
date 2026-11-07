@@ -33,6 +33,58 @@ export const messaging: MessagingConfig = {
   verifiedOn: "2026-10-15 (number from Joshua, matches every post caption; confirm with client before launch)",
 };
 
+/**
+ * Splash screen (design system: structure-templates.md, Splash). `video` is an optional short logo animation
+ * (Flow prompt: system/motion-prompts.md), muted, 2 to 3 s, under 400 KB; null = the built-in CSS logo animation.
+ */
+export const splash = {
+  background: "#0d0d0d",
+  video: null as { mp4: string; webm?: string } | null,
+};
+
+/**
+ * Hero films (design system: structure-templates.md, "Hero film"). Each visit plays ONE short film, picked at random
+ * (weighted, never the same one twice in a row), with its caption set as real text when the pair lands.
+ * Story, prompts and encoding: clients/jis-shoes-ng/hero-film-brief.md. Files per film, in public/film/:
+ *   <id>-portrait.mp4, <id>-portrait.webm (optional), <id>-portrait.jpg. Vertical 9:16 only.
+ * A film plays only once its id is in `readyFilms`; with none ready, the page opens on the hero as before.
+ */
+export type FilmSource = { mp4: string; webm?: string; poster: string };
+export type HeroFilmConfig = {
+  id: string;
+  /** What the film shows, read out to screen readers. */
+  label: string;
+  /** Set in display type under the shoes; real text, never burned into the video. */
+  caption: string;
+  /** Seconds into the film when the pair has landed and the caption appears. */
+  captionAt: number;
+  /** Relative chance of being picked (default 1): lead with the best sellers, like a shop window. */
+  weight?: number;
+  /** 9:16 only: full-screen on portrait screens, in a panel inside the hero on landscape screens. */
+  portrait: FilmSource;
+};
+/** Set `webm` true only when the .webm files exist too (they are smaller; the MP4 is the fallback). */
+const film = (id: string, label: string, caption: string, captionAt: number, weight = 1, webm = false): HeroFilmConfig => ({
+  id,
+  label,
+  caption,
+  captionAt,
+  weight,
+  portrait: { mp4: `${base}/film/${id}-portrait.mp4`, webm: webm ? `${base}/film/${id}-portrait.webm` : undefined, poster: `${base}/film/${id}-portrait.jpg` },
+});
+/** The six planned films. Captions are drafts for the client to approve. */
+const heroFilmPlan: HeroFilmConfig[] = [
+  film("boots", "Work boots dropping from the night sky and landing hard", "Built to land hard.", 2.2),
+  film("runners", "Running sneakers speeding in and skidding to a stop", "Fast never looked this good.", 2.0, 2),
+  film("brogues", "Brown brogues set down on a red carpet from a luxury car", "Keep it classy.", 2.4),
+  film("crocs", "Crocs bursting out of a pool and landing on the edge", "Comfort makes a splash.", 2.2),
+  film("sneakers", "Everyday sneakers rolling in on a skateboard", "Everyday, done right.", 2.0, 2),
+  film("loafers", "Women's platform loafers stepping onto a lit runway", "Step up. Stand out.", 2.2),
+];
+/** Add a film's id here once its files are in public/film/. */
+const readyFilms: string[] = [];
+export const heroFilms: HeroFilmConfig[] = heroFilmPlan.filter((f) => readyFilms.includes(f.id));
+
 export const logo = {
   full: { src: `${base}/brand/logo.svg`, width: 288, height: 388 },
   mark: { src: `${base}/brand/mark.svg`, width: 232, height: 305 },

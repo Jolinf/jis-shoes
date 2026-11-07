@@ -7,8 +7,8 @@ import { PlatformIcon } from "./Icons";
 
 const wrap = "mx-auto w-full max-w-layout px-4 tablet:px-6";
 const SIZES = "(min-width: 1024px) 210px, 45vw";
-/** One slot changes every 3 s, so each slot changes roughly every 30 s. */
-const INTERVAL = 3000;
+/** One slot changes every 1.5 s, so each slot changes roughly every 15 s. */
+const INTERVAL = 1500;
 const FADE = 700;
 /** After a touch or click anywhere in the gallery, nothing changes for this long. */
 const HOLD_AFTER_TOUCH = 8000;

@@ -1,5 +1,6 @@
 import { business, heroPhotos, logo, offerings, styleList } from "@/lib/storefront";
 import { CtaButton } from "./CtaButton";
+import { HeroMedia } from "./HeroFilm";
 import { PlatformIcon } from "./Icons";
 
 /* Design logic for every choice below: clients/jis-shoes-ng/design-logic.md */
@@ -12,7 +13,7 @@ function Eyebrow({ children, tone = "muted" }: { children: React.ReactNode; tone
 
 export function Header() {
   return (
-    <header className="band-dark">
+    <header id="site-header" className="band-dark scroll-mt-0">
       <p className="label bg-black px-4 py-2 text-center !text-[13px] text-brand-tint">
         {business.delivery} <span aria-hidden="true" className="px-1">•</span> WhatsApp {business.whatsappDisplay}
       </p>
@@ -55,6 +56,8 @@ export function Hero() {
           </div>
         </div>
 
+        {/* On landscape screens with a hero film, the film panel takes this column's place (components/HeroFilm.tsx) */}
+        <HeroMedia>
         <div className="relative pb-10 pl-10 tablet:mx-auto tablet:max-w-[520px] desktop:max-w-none">
           <img
             src={main.src}
@@ -77,6 +80,7 @@ export function Hero() {
             Every pair fully boxed
           </p>
         </div>
+        </HeroMedia>
       </div>
     </section>
   );

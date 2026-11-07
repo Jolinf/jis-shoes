@@ -69,4 +69,6 @@ dark (hero) → **gold strip** → bone (offerings) → dark (gallery) → **gol
 
 - 15 Oct 2026: first version (Freitag + Nike.com, white, ruled grid, 50 photos with filters).
 - 15 Oct 2026: redesign (Peak Design + Perk, dark/bone/gold bands, Barlow Condensed, 10-photo gallery, no filters) at Joshua's request: "looks like a wireframe… background is white, feels basic".
+- 26 Oct 2026 (later): hero film changed to the shop-window idea: six 5-second films, one pair each, one random film per visit, with a caption in the display type (cream, large, under the shoes) fading in as the pair lands. Weighted towards sneakers and runners, the biggest part of the catalogue.
+- 26 Oct 2026: splash screen added (gold logo rises in on the black of the dark bands, a gold line draws under it, then the page fades in; 1.5 to 2.8 s, tap to skip, once per visit). Hero film component built and switched off until the film exists; story and prompts in `hero-film-brief.md`: pairs arriving from different worlds and meeting in one gold-lit spot, matching the dark-and-gold palette so the film flows into the page.
 - 15 Oct 2026: gallery rotates from an 82-photo pool; WhatsApp badge moved onto the photo; title and pause button wrap on narrow phones; desktop nav links 48px tall.

@@ -9,6 +9,8 @@
 
 | # | Section ID | Level | Decision | Variant | Content source | Missing data | Actions |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| S | splash screen | page element | include | CSS logo animation on #0D0D0D (no logo film yet) | redrawn logo | logo film optional | tap to skip |
+| F | hero films | page element | built, off until a film is ready | 6 films of ~5 s, one random per visit (weighted, no repeat), caption as real text when the pair lands, Pause + Skip, hands over to the header | `hero-film-brief.md` | the films (shoe photos from Joshua); caption approval | Skip to the shop, Pause / Play |
 | 0a | announcement bar | optional element | include | one line, black | "Nationwide delivery", WhatsApp number | — | — |
 | 0b | header | page element | include | mark + name, anchors | redrawn logo | logo confirmation | `#offerings`, `#gallery`, `#contact` |
 | 1 | hero | REQUIRED | include | split: text + photo pair + sticker (dark band) | tagline, bio lines, "fully boxed" | — | WhatsApp (general), Instagram DM |

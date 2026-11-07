@@ -32,6 +32,9 @@ export const metadata: Metadata = {
   },
 };
 
+const SPLASH_GATE =
+  "try{var d=document.documentElement;if(sessionStorage.getItem('splash-seen')||matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('no-splash')}catch(e){}";
+
 export const viewport: Viewport = { themeColor: "#0d0d0d", width: "device-width", initialScale: 1 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -39,6 +42,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     // suppressHydrationWarning: browser extensions (e.g. Grammarly) add attributes to <html>/<body> before React loads.
     // It only silences attribute differences on these two tags, not in the page content.
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Runs before first paint: skip the splash for a repeat visit in this tab session or for reduced motion
+            (design system: ux-standards.md, Splash). */}
+        <script dangerouslySetInnerHTML={{ __html: SPLASH_GATE }} />
+      </head>
       <body suppressHydrationWarning>{children}</body>
     </html>
   );
