@@ -4,13 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import { logo, splash } from "@/lib/storefront";
 
 /** Counted from when the page started loading, not from when this script ran. */
-const MIN_MS = 2500;
-const MAX_MS = 3000;
+const MIN_MS = 3000;
+const MAX_MS = 5000;
 const FADE_MS = 450;
 
 /**
  * Splash screen (design system: structure-templates.md, ux-standards.md "Splash").
- * - Covers the page while it loads: shown at least 1.5 s, gone by 2.8 s at the latest, sooner on tap or key press.
+ * - Covers the page while it loads: shown at least 3 s, gone by 5 s at the latest, sooner on tap or key press.
  * - Once per tab session, and never under reduced motion (the gate script in app/layout.tsx adds `no-splash`).
  * - If the script never runs, a CSS fallback fades it out at 3.2 s, so the page can never get stuck behind it.
  * - Hidden from screen readers: the page underneath is complete and readable the whole time.
