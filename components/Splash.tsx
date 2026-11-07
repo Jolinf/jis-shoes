@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { logo, splash } from "@/lib/storefront";
 
 /** Counted from when the page started loading, not from when this script ran. */
-const MIN_MS = 1500;
+const MIN_MS = 2500;
 const MAX_MS = 3000;
 const FADE_MS = 450;
 
