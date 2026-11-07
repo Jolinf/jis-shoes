@@ -20,8 +20,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      NEXT_PUBLIC_BASE_PATH: /jis-shoes
-      SITE_URL: https://jolinf.github.io/jis-shoes
+      SITE_URL: https://jisstore.ng
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

@@ -21,9 +21,9 @@ python scripts/download_photos.py        # download photos + review contact shee
 python scripts/prepare_images.py         # web images from scripts/picks.json
 python scripts/build_logo.py             # logo SVGs and icons
 npm run dev
-# build for GitHub Pages (PowerShell):
-$env:NEXT_PUBLIC_BASE_PATH="/jis-shoes"; $env:SITE_URL="https://jolinf.github.io/jis-shoes"; npm run build
+# build for the custom domain (PowerShell):
+$env:SITE_URL="https://jisstore.ng"; npm run build
 npm run qa
 ```
 
-`SITE_URL` must be the real public address: gallery WhatsApp messages contain links to photos under it. `.github/workflows/pages.yml` must use the same values as the GitHub repo name.
+`SITE_URL` must be the real public address: gallery WhatsApp messages contain links to photos under it. Leave `NEXT_PUBLIC_BASE_PATH` unset for the custom domain; the GitHub Pages workflow builds the site at the domain root.
